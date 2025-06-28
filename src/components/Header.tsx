@@ -15,7 +15,7 @@ export function Header() {
         <Link href="/" className="mr-6 flex items-center space-x-2">
           <Smartphone className="h-6 w-6" />
           <span className="font-bold font-headline sm:inline-block">
-            Mobile Boutique
+            CIMO STORE
           </span>
         </Link>
         <nav className="flex items-center gap-6 text-sm">

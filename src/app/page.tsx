@@ -14,7 +14,7 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6 text-center">
           <div className="max-w-3xl mx-auto space-y-4">
             <h1 className="text-4xl font-headline font-bold tracking-tight sm:text-5xl md:text-6xl text-primary">
-              Welcome to Mobile Boutique
+              Welcome to CIMO STORE
             </h1>
             <p className="text-lg text-foreground/80 md:text-xl">
               Discover the latest smartphones, unbeatable deals, and top-notch customer service.
@@ -61,7 +61,7 @@ export default function Home() {
               <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm font-medium">Why Choose Us?</div>
               <h2 className="text-3xl font-bold font-headline tracking-tight sm:text-4xl">Your Trusted Partner in Mobile Tech</h2>
               <p className="text-foreground/70">
-                At Mobile Boutique, we're passionate about connecting you with the technology that matters. We offer a curated selection of the best phones, competitive pricing, and an AI-powered assistant to help you make the perfect choice.
+                At CIMO STORE, we're passionate about connecting you with the technology that matters. We offer a curated selection of the best phones, competitive pricing, and an AI-powered assistant to help you make the perfect choice.
               </p>
             </div>
             <div className="flex justify-center">

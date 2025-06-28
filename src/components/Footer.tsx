@@ -8,7 +8,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2">
             <Smartphone className="h-6 w-6 text-primary" />
-            <span className="font-bold font-headline text-lg">Mobile Boutique</span>
+            <span className="font-bold font-headline text-lg">CIMO STORE</span>
           </div>
           <nav className="flex gap-4 sm:gap-6 text-sm">
             <Link href="/" className="hover:text-primary transition-colors">Home</Link>
@@ -16,7 +16,7 @@ export function Footer() {
             <Link href="/cart" className="hover:text-primary transition-colors">Cart</Link>
           </nav>
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Mobile Boutique. All Rights Reserved.
+            © {new Date().getFullYear()} CIMO STORE. All Rights Reserved.
           </p>
         </div>
       </div>

@@ -21,7 +21,7 @@ const fontPtSans = PT_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'Mobile Boutique',
+  title: 'CIMO STORE',
   description: 'Your one-stop shop for the latest mobile phones.',
 };
 
