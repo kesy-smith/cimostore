@@ -22,7 +22,7 @@ const fontPtSans = PT_Sans({
 
 export const metadata: Metadata = {
   title: 'CIMO STORE',
-  description: 'Your one-stop shop for the latest mobile phones.',
+  description: 'Votre boutique unique pour les derniers téléphones mobiles.',
 };
 
 export default function RootLayout({
@@ -31,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="fr" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

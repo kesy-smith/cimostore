@@ -75,7 +75,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
       
       <div className="mt-16 grid md:grid-cols-2 gap-12">
         <div className="space-y-6">
-          <h2 className="text-2xl font-bold font-headline">Key Features</h2>
+          <h2 className="text-2xl font-bold font-headline">Caractéristiques Clés</h2>
           <ul className="space-y-3">
             {phone.features.map((feature, index) => (
               <li key={index} className="flex items-center gap-3">
@@ -86,7 +86,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
           </ul>
         </div>
         <div className="space-y-6">
-          <h2 className="text-2xl font-bold font-headline">Specifications</h2>
+          <h2 className="text-2xl font-bold font-headline">Spécifications</h2>
            <Table>
             <TableBody>
               {Object.entries(phone.specs).map(([key, value]) => (
@@ -101,7 +101,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
       </div>
 
        <div className="mt-16">
-        <h2 className="text-2xl font-bold font-headline mb-6">Customer Reviews</h2>
+        <h2 className="text-2xl font-bold font-headline mb-6">Avis des clients</h2>
         <div className="space-y-6">
           {phone.reviews.map((review, index) => (
             <Card key={index}>

@@ -16,10 +16,10 @@ export default function CartPage() {
     return (
       <div className="container mx-auto py-24 text-center">
         <ShoppingBag className="mx-auto h-24 w-24 text-muted-foreground" />
-        <h1 className="mt-8 text-3xl font-bold font-headline">Your cart is empty</h1>
-        <p className="mt-4 text-muted-foreground">Looks like you haven't added anything to your cart yet.</p>
+        <h1 className="mt-8 text-3xl font-bold font-headline">Votre panier est vide</h1>
+        <p className="mt-4 text-muted-foreground">Il semble que vous n'ayez encore rien ajouté à votre panier.</p>
         <Button asChild className="mt-8">
-          <Link href="/shop">Start Shopping</Link>
+          <Link href="/shop">Commencer les achats</Link>
         </Button>
       </div>
     )
@@ -27,7 +27,7 @@ export default function CartPage() {
 
   return (
     <div className="container mx-auto py-12 px-4 md:px-6">
-      <h1 className="text-3xl lg:text-4xl font-bold font-headline mb-8">Your Cart</h1>
+      <h1 className="text-3xl lg:text-4xl font-bold font-headline mb-8">Votre Panier</h1>
       <div className="grid lg:grid-cols-3 gap-12">
         <div className="lg:col-span-2">
           <Card>
@@ -35,10 +35,10 @@ export default function CartPage() {
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead className="w-[100px]">Product</TableHead>
-                    <TableHead>Details</TableHead>
-                    <TableHead className="text-center">Quantity</TableHead>
-                    <TableHead className="text-right">Price</TableHead>
+                    <TableHead className="w-[100px]">Produit</TableHead>
+                    <TableHead>Détails</TableHead>
+                    <TableHead className="text-center">Quantité</TableHead>
+                    <TableHead className="text-right">Prix</TableHead>
                     <TableHead className="w-[50px]"></TableHead>
                   </TableRow>
                 </TableHeader>
@@ -72,7 +72,7 @@ export default function CartPage() {
                       <TableCell>
                         <Button variant="ghost" size="icon" onClick={() => removeFromCart(item.id)}>
                           <Trash2 className="h-4 w-4 text-muted-foreground" />
-                          <span className="sr-only">Remove item</span>
+                          <span className="sr-only">Supprimer l'article</span>
                         </Button>
                       </TableCell>
                     </TableRow>
@@ -85,16 +85,16 @@ export default function CartPage() {
         <div className="lg:col-span-1">
           <Card>
             <CardHeader>
-              <CardTitle className="font-headline">Order Summary</CardTitle>
+              <CardTitle className="font-headline">Résumé de la commande</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex justify-between">
-                <span>Subtotal</span>
+                <span>Sous-total</span>
                 <span>${totalPrice.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
-                <span>Shipping</span>
-                <span>Free</span>
+                <span>Livraison</span>
+                <span>Gratuite</span>
               </div>
               <div className="flex justify-between font-bold text-lg">
                 <span>Total</span>
@@ -103,7 +103,7 @@ export default function CartPage() {
             </CardContent>
             <CardFooter>
               <Button asChild size="lg" className="w-full">
-                <Link href="/checkout">Proceed to Checkout</Link>
+                <Link href="/checkout">Passer à la caisse</Link>
               </Button>
             </CardFooter>
           </Card>

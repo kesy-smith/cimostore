@@ -23,7 +23,7 @@ export function Header() {
             href="/shop"
             className="transition-colors hover:text-foreground/80 text-foreground/60"
           >
-            Shop
+            Boutique
           </Link>
         </nav>
         <div className="flex flex-1 items-center justify-end space-x-4">
@@ -38,7 +38,7 @@ export function Header() {
                   {itemCount}
                 </Badge>
               )}
-              <span className="sr-only">Shopping Cart</span>
+              <span className="sr-only">Panier</span>
             </Link>
           </Button>
         </div>

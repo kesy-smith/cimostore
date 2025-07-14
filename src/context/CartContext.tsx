@@ -34,16 +34,16 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       }
     });
     toast({
-      title: "Added to cart",
-      description: `${item.name} has been added to your cart.`,
+      title: "Ajouté au panier",
+      description: `${item.name} a été ajouté à votre panier.`,
     })
   };
 
   const removeFromCart = (itemId: number) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
     toast({
-      title: "Removed from cart",
-      description: `Item has been removed from your cart.`,
+      title: "Retiré du panier",
+      description: `L'article a été retiré de votre panier.`,
       variant: 'destructive'
     })
   };

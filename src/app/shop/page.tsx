@@ -36,9 +36,9 @@ export default function ShopPage() {
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold font-headline tracking-tight sm:text-5xl">Our Collection</h1>
+        <h1 className="text-4xl font-bold font-headline tracking-tight sm:text-5xl">Notre Collection</h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-          Find the perfect phone that fits your life and your budget.
+          Trouvez le téléphone parfait qui correspond à votre vie et à votre budget.
         </p>
       </div>
 
@@ -46,11 +46,11 @@ export default function ShopPage() {
         <aside className="lg:col-span-1">
           <Card>
             <CardHeader>
-              <CardTitle className="font-headline text-xl">Filters</CardTitle>
+              <CardTitle className="font-headline text-xl">Filtres</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
               <div>
-                <h3 className="font-semibold mb-4">Brand</h3>
+                <h3 className="font-semibold mb-4">Marque</h3>
                 <div className="space-y-2">
                   {allBrands.map((brand) => (
                     <div key={brand} className="flex items-center space-x-2">
@@ -65,7 +65,7 @@ export default function ShopPage() {
                 </div>
               </div>
               <div>
-                <h3 className="font-semibold mb-4">Price Range</h3>
+                <h3 className="font-semibold mb-4">Gamme de prix</h3>
                 <div className="space-y-4">
                   <Slider
                     max={maxPrice}
@@ -74,7 +74,7 @@ export default function ShopPage() {
                     onValueChange={(value) => setPriceRange(value as [number])}
                   />
                   <div className="text-center text-muted-foreground">
-                    Up to ${priceRange[0]}
+                    Jusqu'à ${priceRange[0]}
                   </div>
                 </div>
               </div>
@@ -91,8 +91,8 @@ export default function ShopPage() {
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center h-full bg-card rounded-lg p-8">
-                <p className="text-xl font-semibold">No products found</p>
-                <p className="text-muted-foreground mt-2">Try adjusting your filters.</p>
+                <p className="text-xl font-semibold">Aucun produit trouvé</p>
+                <p className="text-muted-foreground mt-2">Essayez d'ajuster vos filtres.</p>
             </div>
           )}
         </main>

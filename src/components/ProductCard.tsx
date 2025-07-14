@@ -26,7 +26,7 @@ export function ProductCard({ phone }: ProductCardProps) {
         </Link>
         {phone.originalPrice && (
           <Badge variant="destructive" className="absolute top-4 right-4">
-            SALE
+            PROMO
           </Badge>
         )}
       </CardHeader>

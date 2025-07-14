@@ -14,21 +14,21 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6 text-center">
           <div className="max-w-3xl mx-auto space-y-4">
             <h1 className="text-4xl font-headline font-bold tracking-tight sm:text-5xl md:text-6xl text-primary">
-              Welcome to CIMO STORE
+              Bienvenue chez CIMO STORE
             </h1>
             <p className="text-lg text-foreground/80 md:text-xl">
-              Discover the latest smartphones, unbeatable deals, and top-notch customer service.
+              Découvrez les derniers smartphones, des offres imbattables et un service client de premier ordre.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="font-headline">
                 <Link href="/shop">
-                  Shop Now
+                  Acheter maintenant
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="font-headline">
                 <Link href="/shop">
-                  Explore Deals
+                  Découvrir les offres
                 </Link>
               </Button>
             </div>
@@ -40,10 +40,10 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col items-center text-center space-y-4 mb-12">
             <h2 className="text-3xl font-bold font-headline tracking-tight sm:text-4xl">
-              Featured Products
+              Produits en vedette
             </h2>
             <p className="max-w-2xl text-foreground/70 md:text-lg">
-              Check out our hand-picked selection of the best smartphones available right now.
+              Découvrez notre sélection des meilleurs smartphones disponibles actuellement.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -58,10 +58,10 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-4">
-              <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm font-medium">Why Choose Us?</div>
-              <h2 className="text-3xl font-bold font-headline tracking-tight sm:text-4xl">Your Trusted Partner in Mobile Tech</h2>
+              <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm font-medium">Pourquoi nous choisir ?</div>
+              <h2 className="text-3xl font-bold font-headline tracking-tight sm:text-4xl">Votre partenaire de confiance en technologie mobile</h2>
               <p className="text-foreground/70">
-                At CIMO STORE, we're passionate about connecting you with the technology that matters. We offer a curated selection of the best phones, competitive pricing, and an AI-powered assistant to help you make the perfect choice.
+                Chez CIMO STORE, nous sommes passionnés par le fait de vous connecter avec la technologie qui compte. Nous offrons une sélection soignée des meilleurs téléphones, des prix compétitifs et un assistant alimenté par l'IA pour vous aider à faire le choix parfait.
               </p>
             </div>
             <div className="flex justify-center">

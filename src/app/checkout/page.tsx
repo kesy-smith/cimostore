@@ -29,8 +29,8 @@ export default function CheckoutPage() {
     clearCart();
     
     toast({
-      title: "Order Placed!",
-      description: "Thank you for your purchase. We've received your order.",
+      title: "Commande passée !",
+      description: "Merci pour votre achat. Nous avons bien reçu votre commande.",
     });
 
     router.push('/');
@@ -42,16 +42,16 @@ export default function CheckoutPage() {
 
   return (
     <div className="container mx-auto py-12 px-4 md:px-6">
-      <h1 className="text-3xl lg:text-4xl font-bold font-headline mb-8">Checkout</h1>
+      <h1 className="text-3xl lg:text-4xl font-bold font-headline mb-8">Paiement</h1>
       <form onSubmit={handlePlaceOrder} className="grid lg:grid-cols-3 gap-12">
         <div className="lg:col-span-2">
           <Card>
             <CardHeader>
-              <CardTitle className="font-headline">Shipping Information</CardTitle>
+              <CardTitle className="font-headline">Informations de livraison</CardTitle>
             </CardHeader>
             <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <Label htmlFor="name">Full Name</Label>
+                <Label htmlFor="name">Nom complet</Label>
                 <Input id="name" required />
               </div>
               <div className="space-y-2">
@@ -59,15 +59,15 @@ export default function CheckoutPage() {
                 <Input id="email" type="email" required />
               </div>
               <div className="md:col-span-2 space-y-2">
-                <Label htmlFor="address">Address</Label>
+                <Label htmlFor="address">Adresse</Label>
                 <Input id="address" required />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="city">City</Label>
+                <Label htmlFor="city">Ville</Label>
                 <Input id="city" required />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="zip">ZIP Code</Label>
+                <Label htmlFor="zip">Code postal</Label>
                 <Input id="zip" required />
               </div>
             </CardContent>
@@ -76,7 +76,7 @@ export default function CheckoutPage() {
         <div className="lg:col-span-1">
           <Card>
             <CardHeader>
-              <CardTitle className="font-headline">Your Order</CardTitle>
+              <CardTitle className="font-headline">Votre Commande</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               {cart.map(item => (
@@ -92,7 +92,7 @@ export default function CheckoutPage() {
             </CardContent>
           </Card>
           <Button type="submit" size="lg" className="w-full mt-8">
-            Place Order
+            Passer la commande
           </Button>
         </div>
       </form>

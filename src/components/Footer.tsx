@@ -11,12 +11,12 @@ export function Footer() {
             <span className="font-bold font-headline text-lg">CIMO STORE</span>
           </div>
           <nav className="flex gap-4 sm:gap-6 text-sm">
-            <Link href="/" className="hover:text-primary transition-colors">Home</Link>
-            <Link href="/shop" className="hover:text-primary transition-colors">Shop</Link>
-            <Link href="/cart" className="hover:text-primary transition-colors">Cart</Link>
+            <Link href="/" className="hover:text-primary transition-colors">Accueil</Link>
+            <Link href="/shop" className="hover:text-primary transition-colors">Boutique</Link>
+            <Link href="/cart" className="hover:text-primary transition-colors">Panier</Link>
           </nav>
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} CIMO STORE. All Rights Reserved.
+            © {new Date().getFullYear()} CIMO STORE. Tous droits réservés.
           </p>
         </div>
       </div>

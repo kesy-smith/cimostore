@@ -8,6 +8,6 @@ export async function handleInquiry(query: string) {
     return result.answer;
   } catch (error) {
     console.error("Error handling inquiry:", error);
-    return "I'm sorry, I'm having trouble connecting to my knowledge base right now. Please try again later.";
+    return "Je suis désolé, j'ai des difficultés à me connecter à ma base de connaissances en ce moment. Veuillez réessayer plus tard.";
   }
 }
