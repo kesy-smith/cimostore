@@ -7,15 +7,17 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Slider } from '@/components/ui/slider';
+import { Input } from '@/components/ui/input';
 import type { Phone } from '@/lib/types';
 
-const allPhones = getPhones();
-const allBrands = getPhoneBrands();
-const maxPrice = Math.max(...allPhones.map(p => p.price));
+const allProducts = getPhones();
+const allBrands = [...new Set(allProducts.map(p => p.brand))];
+const maxPrice = Math.max(...allProducts.map(p => p.price));
 
 export default function ShopPage() {
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [priceRange, setPriceRange] = useState<[number]>([maxPrice]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleBrandChange = (brand: string) => {
     setSelectedBrands((prev) =>
@@ -25,21 +27,32 @@ export default function ShopPage() {
     );
   };
 
-  const filteredPhones = useMemo(() => {
-    return allPhones.filter((phone) => {
-      const brandMatch = selectedBrands.length === 0 || selectedBrands.includes(phone.brand);
-      const priceMatch = phone.price <= priceRange[0];
-      return brandMatch && priceMatch;
+  const filteredProducts = useMemo(() => {
+    return allProducts.filter((product) => {
+      const brandMatch = selectedBrands.length === 0 || selectedBrands.includes(product.brand);
+      const priceMatch = product.price <= priceRange[0];
+      const searchMatch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
+      return brandMatch && priceMatch && searchMatch;
     });
-  }, [selectedBrands, priceRange]);
+  }, [selectedBrands, priceRange, searchTerm]);
 
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold font-headline tracking-tight sm:text-5xl">Notre Collection</h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-          Trouvez le téléphone parfait qui correspond à votre vie et à votre budget.
+          Trouvez le produit Apple parfait qui correspond à votre vie et à votre budget.
         </p>
+      </div>
+      
+      <div className="mb-8 max-w-lg mx-auto">
+        <Input 
+          type="text"
+          placeholder="Rechercher un produit..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full"
+        />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
@@ -83,16 +96,16 @@ export default function ShopPage() {
         </aside>
 
         <main className="lg:col-span-3">
-          {filteredPhones.length > 0 ? (
+          {filteredProducts.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-              {filteredPhones.map((phone) => (
+              {filteredProducts.map((phone) => (
                 <ProductCard key={phone.id} phone={phone} />
               ))}
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center h-full bg-card rounded-lg p-8">
                 <p className="text-xl font-semibold">Aucun produit trouvé</p>
-                <p className="text-muted-foreground mt-2">Essayez d'ajuster vos filtres.</p>
+                <p className="text-muted-foreground mt-2">Essayez d'ajuster vos filtres ou votre recherche.</p>
             </div>
           )}
         </main>

@@ -42,12 +42,12 @@ export default function Chatbot() {
       <SheetTrigger asChild>
         <Button className="fixed bottom-6 right-6 h-16 w-16 rounded-full shadow-lg" size="icon">
           <Bot className="h-8 w-8" />
-          <span className="sr-only">Ouvrir le Chatbot</span>
+          <span className="sr-only">Ouvrir KESY</span>
         </Button>
       </SheetTrigger>
       <SheetContent className="flex flex-col">
         <SheetHeader>
-          <SheetTitle className="font-headline text-xl">Assistant IA</SheetTitle>
+          <SheetTitle className="font-headline text-xl">KESY - Assistant IA</SheetTitle>
         </SheetHeader>
         <ScrollArea className="flex-grow my-4 pr-4">
           <div className="space-y-4">
@@ -56,7 +56,7 @@ export default function Chatbot() {
                 <AvatarFallback><Bot /></AvatarFallback>
               </Avatar>
               <div className="bg-muted p-3 rounded-lg max-w-[80%]">
-                <p className="text-sm">Bonjour ! Comment puis-je vous aider avec nos téléphones aujourd'hui ?</p>
+                <p className="text-sm">Bonjour ! Je suis KESY. Comment puis-je vous aider avec nos produits aujourd'hui ?</p>
               </div>
             </div>
             {messages.map((message, index) => (
@@ -98,7 +98,7 @@ export default function Chatbot() {
           <form onSubmit={handleSubmit} className="flex w-full items-center space-x-2">
             <Input
               type="text"
-              placeholder="Questions sur les téléphones, prix..."
+              placeholder="Poser une question à KESY..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
               disabled={isLoading}
