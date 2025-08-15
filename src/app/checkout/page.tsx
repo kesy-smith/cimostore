@@ -19,21 +19,55 @@ export default function CheckoutPage() {
       router.push('/shop');
     }
   }, [itemCount, router]);
-  
 
-  const handlePlaceOrder = (e: React.FormEvent) => {
+  const handlePlaceOrder = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // In a real app, this would handle payment processing
-    console.log("Placing order with items:", cart);
-
-    clearCart();
     
-    toast({
-      title: "Commande passée !",
-      description: "Merci pour votre achat. Nous avons bien reçu votre commande.",
-    });
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const address = formData.get("address") as string;
+    const city = formData.get("city") as string;
+    const zip = formData.get("zip") as string;
 
-    router.push('/');
+    const sellerPhoneNumber = "243991687092"; // Numéro du vendeur sans le '+'
+
+    const itemsSummary = cart.map(item => `${item.name} (x${item.quantity})`).join('\n- ');
+    
+    const message = `
+*Nouvelle Commande CIMO STORE*
+
+Un client vient de passer une commande.
+
+*Détails de la commande :*
+- ${itemsSummary}
+
+*Total :* $${totalPrice.toFixed(2)}
+
+*Informations de livraison :*
+- *Nom complet :* ${name}
+- *Email :* ${email}
+- *Adresse :* ${address}
+- *Ville :* ${city}
+- *Code postal :* ${zip}
+
+Veuillez préparer la livraison.
+    `;
+
+    const whatsappUrl = `https://wa.me/${sellerPhoneNumber}?text=${encodeURIComponent(message.trim())}`;
+    
+    // Redirige l'utilisateur vers WhatsApp
+    window.location.href = whatsappUrl;
+
+    // Affiche une notification et vide le panier après une courte pause
+    setTimeout(() => {
+        clearCart();
+        toast({
+            title: "Redirection vers WhatsApp",
+            description: "Votre commande est en cours de finalisation. Veuillez envoyer le message sur WhatsApp.",
+        });
+        router.push('/');
+    }, 2000); // 2 secondes de délai
   };
   
   if (itemCount === 0) {
@@ -52,23 +86,23 @@ export default function CheckoutPage() {
             <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="name">Nom complet</Label>
-                <Input id="name" required />
+                <Input id="name" name="name" required />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" required />
+                <Input id="email" name="email" type="email" required />
               </div>
               <div className="md:col-span-2 space-y-2">
                 <Label htmlFor="address">Adresse</Label>
-                <Input id="address" required />
+                <Input id="address" name="address" required />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="city">Ville</Label>
-                <Input id="city" required />
+                <Input id="city" name="city" required />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="zip">Code postal</Label>
-                <Input id="zip" required />
+                <Input id="zip" name="zip" required />
               </div>
             </CardContent>
           </Card>
@@ -92,7 +126,7 @@ export default function CheckoutPage() {
             </CardContent>
           </Card>
           <Button type="submit" size="lg" className="w-full mt-8">
-            Passer la commande
+            Passer la commande via WhatsApp
           </Button>
         </div>
       </form>
