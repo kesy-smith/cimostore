@@ -28,7 +28,7 @@ const phones: Phone[] = [
     brand: 'Apple',
     price: 1280,
     originalPrice: 1400,
-    images: ['https://placehold.co/800x805.png', 'https://placehold.co/800x803.png', 'https://placehold.co/800x804.png'],
+    images: ['https://placehold.co/800x802.png', 'https://placehold.co/800x803.png', 'https://placehold.co/800x804.png'],
     description: 'Plus d\'espace pour vos photos et vidéos. Forgé en titane et doté de la puce révolutionnaire A17 Pro.',
     features: ['Design en titane', 'Puce A17 Pro', '256Go de stockage'],
     specs: {
