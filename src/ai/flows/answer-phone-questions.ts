@@ -1,22 +1,22 @@
 'use server';
 /**
- * @fileOverview A question answering AI agent about phones.
+ * @fileOverview Un agent IA pour répondre aux questions sur les téléphones.
  *
- * - answerPhoneQuestions - A function that handles the question answering process.
- * - AnswerPhoneQuestionsInput - The input type for the answerPhoneQuestions function.
- * - AnswerPhoneQuestionsOutput - The return type for the answerPhoneQuestions function.
+ * - answerPhoneQuestions - Une fonction qui gère le processus de réponse aux questions.
+ * - AnswerPhoneQuestionsInput - Le type d'entrée pour la fonction answerPhoneQuestions.
+ * - AnswerPhoneQuestionsOutput - Le type de retour pour la fonction answerPhoneQuestions.
  */
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const AnswerPhoneQuestionsInputSchema = z.object({
-  query: z.string().describe('The question to ask about phone models, availability, and pricing.'),
+  query: z.string().describe('La question à poser sur les modèles de téléphones, leur disponibilité et leurs prix.'),
 });
 export type AnswerPhoneQuestionsInput = z.infer<typeof AnswerPhoneQuestionsInputSchema>;
 
 const AnswerPhoneQuestionsOutputSchema = z.object({
-  answer: z.string().describe('The answer to the question.'),
+  answer: z.string().describe('La réponse à la question.'),
 });
 export type AnswerPhoneQuestionsOutput = z.infer<typeof AnswerPhoneQuestionsOutputSchema>;
 
@@ -28,9 +28,9 @@ const prompt = ai.definePrompt({
   name: 'answerPhoneQuestionsPrompt',
   input: {schema: AnswerPhoneQuestionsInputSchema},
   output: {schema: AnswerPhoneQuestionsOutputSchema},
-  prompt: `You are a chatbot assistant specialized in answering questions about phone models, availability, and pricing.
+  prompt: `Vous êtes un assistant chatbot spécialisé dans la réponse aux questions sur les modèles de téléphones, leur disponibilité et leurs prix.
 
-  Answer the following question:
+  Répondez à la question suivante :
 
   {{query}}`,
 });
