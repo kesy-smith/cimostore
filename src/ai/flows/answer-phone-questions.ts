@@ -1,4 +1,3 @@
-// This file is machine-generated - edit with caution!
 'use server';
 /**
  * @fileOverview A question answering AI agent about phones.
