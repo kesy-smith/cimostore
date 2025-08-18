@@ -10,9 +10,9 @@ import {
   CardContent,
 } from '@/components/ui/card';
 
-async function GeneratedImage() {
+async function GeneratedImage({ productName }: { productName: string }) {
   const { media } = await generatePhoneImage({
-    prompt: 'A sleek, futuristic smartphone with a holographic display, on a clean, minimalist background. professional product shot, hyper-realistic',
+    prompt: `Un rendu photoréaliste de haute qualité du smartphone ${productName} sur un fond de studio propre et minimaliste.`,
   });
   if (!media?.url) {
     return null;
@@ -20,12 +20,12 @@ async function GeneratedImage() {
   return (
     <Image
       src={media.url}
-      alt="Image de téléphone générée par IA"
+      alt={`Image de ${productName} générée par IA`}
       width={1200}
       height={675}
       className="rounded-lg object-cover w-full h-full"
       priority
-      data-ai-hint="futuristic phone"
+      data-ai-hint="phone product"
     />
   );
 }
@@ -33,6 +33,7 @@ async function GeneratedImage() {
 export default function Home() {
   const allPhones = getPhones();
   const featuredPhones = allPhones.slice(0, 3);
+  const phoneToGenerate = featuredPhones[Math.floor(Math.random() * featuredPhones.length)];
 
   return (
     <div className="flex flex-col">
@@ -62,7 +63,7 @@ export default function Home() {
             <div className="relative aspect-video rounded-xl shadow-2xl">
                  <Card className='h-full w-full'>
                     <CardContent className='p-0 h-full w-full'>
-                         <GeneratedImage />
+                         <GeneratedImage productName={phoneToGenerate.name} />
                     </CardContent>
                  </Card>
                  <div className="absolute bottom-4 right-4 bg-primary/80 backdrop-blur-sm text-primary-foreground text-xs font-bold py-1 px-3 rounded-full flex items-center gap-1">
