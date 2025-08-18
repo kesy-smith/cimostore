@@ -9,6 +9,7 @@ import {
   Card,
   CardContent,
 } from '@/components/ui/card';
+import React from 'react';
 
 async function GeneratedImage({ productName }: { productName: string }) {
   const { media } = await generatePhoneImage({
@@ -63,7 +64,9 @@ export default function Home() {
             <div className="relative aspect-video rounded-xl shadow-2xl">
                  <Card className='h-full w-full'>
                     <CardContent className='p-0 h-full w-full'>
-                         <GeneratedImage productName={phoneToGenerate.name} />
+                         <React.Suspense fallback={<div className="bg-muted w-full h-full animate-pulse rounded-lg" />}>
+                            <GeneratedImage productName={phoneToGenerate.name} />
+                         </React.Suspense>
                     </CardContent>
                  </Card>
                  <div className="absolute bottom-4 right-4 bg-primary/80 backdrop-blur-sm text-primary-foreground text-xs font-bold py-1 px-3 rounded-full flex items-center gap-1">
@@ -86,7 +89,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredPhones.map((phone) => (
-              <ProductCard key={phone.id} phone={phone} />
+              <ProductCard key={phone.id} phone={phone} generateImage={true} />
             ))}
           </div>
         </div>
