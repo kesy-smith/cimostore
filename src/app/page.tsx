@@ -1,8 +1,34 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Smartphone } from 'lucide-react';
+import { ArrowRight, Smartphone, Zap } from 'lucide-react';
 import { getPhones } from '@/lib/phones';
 import { ProductCard } from '@/components/ProductCard';
+import { generatePhoneImage } from '@/ai/flows/generate-phone-image';
+import {
+  Card,
+  CardContent,
+} from '@/components/ui/card';
+
+async function GeneratedImage() {
+  const { media } = await generatePhoneImage({
+    prompt: 'A sleek, futuristic smartphone with a holographic display, on a clean, minimalist background. professional product shot, hyper-realistic',
+  });
+  if (!media?.url) {
+    return null;
+  }
+  return (
+    <Image
+      src={media.url}
+      alt="Image de téléphone générée par IA"
+      width={1200}
+      height={675}
+      className="rounded-lg object-cover w-full h-full"
+      priority
+      data-ai-hint="futuristic phone"
+    />
+  );
+}
 
 export default function Home() {
   const allPhones = getPhones();
@@ -10,29 +36,40 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
-      <section className="relative w-full py-24 md:py-32 lg:py-40 bg-card">
-        <div className="container mx-auto px-4 md:px-6 text-center">
-          <div className="max-w-3xl mx-auto space-y-4">
-            <h1 className="text-4xl font-headline font-bold tracking-tight sm:text-5xl md:text-6xl text-primary">
-              Bienvenue chez CIMO STORE
-            </h1>
-            <p className="text-lg text-foreground/80 md:text-xl">
-              Découvrez les derniers smartphones, des offres imbattables et un service client de premier ordre.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="font-headline">
-                <Link href="/shop">
-                  Acheter maintenant
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="font-headline">
-                <Link href="/shop">
-                  Découvrir les offres
-                </Link>
-              </Button>
+      <section className="relative w-full py-24 md:py-32 lg:py-40 bg-card overflow-hidden">
+        <div className="container mx-auto px-4 md:px-6 grid md:grid-cols-2 gap-8 items-center">
+            <div className="max-w-xl space-y-4 text-center md:text-left">
+                <h1 className="text-4xl font-headline font-bold tracking-tight sm:text-5xl md:text-6xl text-primary">
+                Bienvenue chez CIMO STORE
+                </h1>
+                <p className="text-lg text-foreground/80 md:text-xl">
+                Découvrez les derniers smartphones, des offres imbattables et un service client de premier ordre.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                <Button asChild size="lg" className="font-headline">
+                    <Link href="/shop">
+                    Acheter maintenant
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                    </Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="font-headline">
+                    <Link href="/shop">
+                    Découvrir les offres
+                    </Link>
+                </Button>
+                </div>
             </div>
-          </div>
+            <div className="relative aspect-video rounded-xl shadow-2xl">
+                 <Card className='h-full w-full'>
+                    <CardContent className='p-0 h-full w-full'>
+                         <GeneratedImage />
+                    </CardContent>
+                 </Card>
+                 <div className="absolute bottom-4 right-4 bg-primary/80 backdrop-blur-sm text-primary-foreground text-xs font-bold py-1 px-3 rounded-full flex items-center gap-1">
+                    <Zap className="h-3 w-3" />
+                    <span>Image générée par l'IA</span>
+                </div>
+            </div>
         </div>
       </section>
 

@@ -21,6 +21,12 @@ const nextConfig: NextConfig = {
         hostname: 'www.apple.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'storage.googleapis.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
