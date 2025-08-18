@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Poppins, PT_Sans } from 'next/font/google';
 import { cn } from '@/lib/utils';
@@ -23,6 +23,11 @@ const fontPtSans = PT_Sans({
 export const metadata: Metadata = {
   title: 'CIMO STORE',
   description: 'Votre boutique unique pour les derniers téléphones mobiles.',
+  manifest: '/manifest.json',
+};
+
+export const viewport: Viewport = {
+  themeColor: '#4f46e5',
 };
 
 export default function RootLayout({
