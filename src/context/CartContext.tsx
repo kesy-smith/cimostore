@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useCallback } from 'react';
 import type { CartItem, Phone } from '@/lib/types';
 import { useToast } from "@/hooks/use-toast"
 
@@ -9,6 +9,7 @@ interface CartContextType {
   addToCart: (item: Phone) => void;
   removeFromCart: (itemId: number) => void;
   updateQuantity: (itemId: number, quantity: number) => void;
+  updateItemImage: (itemId: number, images: string[]) => void;
   clearCart: () => void;
   itemCount: number;
   totalPrice: number;
@@ -60,6 +61,14 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     }
   };
   
+  const updateItemImage = useCallback((itemId: number, images: string[]) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === itemId ? { ...item, images } : item
+      )
+    );
+  }, []);
+
   const clearCart = () => {
     setCart([]);
   }
@@ -69,7 +78,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart, itemCount, totalPrice }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, updateItemImage, clearCart, itemCount, totalPrice }}>
       {children}
     </CartContext.Provider>
   );

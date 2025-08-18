@@ -1,15 +1,9 @@
 import { getPhoneById } from '@/lib/phones';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import { Star, CheckCircle } from 'lucide-react';
+import { Star, CheckCircle, Zap } from 'lucide-react';
+import React from 'react';
 
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel';
 import { Card, CardContent } from '@/components/ui/card';
 import {
   Table,
@@ -20,6 +14,37 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { AddToCartButton } from '@/components/AddToCartButton';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { generatePhoneImage } from '@/ai/flows/generate-phone-image';
+
+
+async function GeneratedProductImage({ productName }: { productName: string }) {
+  const { media } = await generatePhoneImage({
+    prompt: `Un rendu photoréaliste de haute qualité du smartphone ${productName} sur un fond de studio propre et minimaliste, vue de face.`,
+  });
+  if (!media?.url) {
+    return (
+      <div className="aspect-square w-full bg-muted flex items-center justify-center text-muted-foreground">
+          Image non disponible
+      </div>
+    );
+  }
+  return (
+      <>
+          <Image
+              src={media.url}
+              alt={`Image de ${productName} générée par IA`}
+              width={600}
+              height={600}
+              className="object-cover rounded-lg"
+              data-ai-hint="phone detail"
+          />
+          <div className="absolute bottom-2 right-2 bg-primary/80 backdrop-blur-sm text-primary-foreground text-xs font-bold py-1 px-2 rounded-full flex items-center gap-1 z-10">
+              <Zap className="h-3 w-3" />
+              <span>Générée par IA</span>
+          </div>
+      </>
+  );
+}
 
 
 export default function ProductDetailPage({ params }: { params: { id: string } }) {
@@ -33,28 +58,13 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
     <div className="container mx-auto py-12 px-4 md:px-6">
       <div className="grid md:grid-cols-2 gap-12 items-start">
         <div>
-          <Carousel className="w-full">
-            <CarouselContent>
-              {phone.images.map((src, index) => (
-                <CarouselItem key={index}>
-                  <Card>
-                    <CardContent className="flex aspect-square items-center justify-center p-0">
-                       <Image
-                        src={src}
-                        alt={`${phone.name} image ${index + 1}`}
-                        width={600}
-                        height={600}
-                        className="object-cover rounded-lg"
-                        data-ai-hint="phone detail"
-                      />
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
+           <Card className="relative">
+            <CardContent className="flex aspect-square items-center justify-center p-0">
+               <React.Suspense fallback={<div className="aspect-square w-full bg-muted animate-pulse rounded-lg" />}>
+                  <GeneratedProductImage productName={phone.name} />
+                </React.Suspense>
+            </CardContent>
+          </Card>
         </div>
 
         <div className="space-y-6">
