@@ -4,24 +4,53 @@ import type { Phone } from '@/lib/types';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { AddToCartButton } from './AddToCartButton';
+import React from 'react';
+import { generatePhoneImage } from '@/ai/flows/generate-phone-image';
 
 interface ProductCardProps {
   phone: Phone;
 }
+
+async function GeneratedProductImage({ productName }: { productName: string }) {
+  const { media } = await generatePhoneImage({
+    prompt: `Un rendu photoréaliste de haute qualité du smartphone ${productName} sur un fond de studio propre et minimaliste.`,
+  });
+
+  if (!media?.url) {
+    // Fallback to a placeholder if image generation fails
+    return (
+       <Image
+          src="https://placehold.co/600x600.png"
+          alt={productName}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          data-ai-hint="phone product placeholder"
+        />
+    );
+  }
+
+  return (
+    <Image
+      src={media.url}
+      alt={`Image de ${productName} générée par IA`}
+      fill
+      className="object-cover"
+      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      data-ai-hint="phone product"
+    />
+  );
+}
+
 
 export function ProductCard({ phone }: ProductCardProps) {
   return (
     <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
       <CardHeader className="p-0 relative">
         <Link href={`/products/${phone.id}`} className="block aspect-square w-full relative">
-          <Image
-            src={phone.images[0]}
-            alt={phone.name}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            data-ai-hint="phone product"
-          />
+           <React.Suspense fallback={<div className="aspect-square w-full bg-muted animate-pulse" />}>
+              <GeneratedProductImage productName={phone.name} />
+           </React.Suspense>
         </Link>
         {phone.originalPrice && (
           <Badge variant="destructive" className="absolute top-4 right-4 z-10">

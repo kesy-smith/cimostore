@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, Suspense } from 'react';
 import { getPhones } from '@/lib/phones';
 import { ProductCard } from '@/components/ProductCard';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -8,10 +8,30 @@ import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Slider } from '@/components/ui/slider';
 import { Input } from '@/components/ui/input';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const allProducts = getPhones();
 const allBrands = [...new Set(allProducts.map(p => p.brand))];
 const maxPrice = Math.max(...allProducts.map(p => p.price));
+
+function ProductGridSkeleton() {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+      {Array.from({ length: 6 }).map((_, i) => (
+        <Card key={i}>
+          <Skeleton className="aspect-square w-full" />
+          <CardContent className="p-6 space-y-2">
+            <Skeleton className="h-5 w-3/4" />
+            <Skeleton className="h-4 w-1/4" />
+          </CardContent>
+          <CardFooter className="p-6 pt-0">
+             <Skeleton className="h-10 w-full" />
+          </CardFooter>
+        </Card>
+      ))}
+    </div>
+  )
+}
 
 export default function ShopPage() {
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
@@ -95,18 +115,20 @@ export default function ShopPage() {
         </aside>
 
         <main className="lg:col-span-3">
-          {filteredProducts.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-              {filteredProducts.map((phone) => (
-                <ProductCard key={phone.id} phone={phone} />
-              ))}
-            </div>
-          ) : (
-            <div className="flex flex-col items-center justify-center h-full bg-card rounded-lg p-8">
-                <p className="text-xl font-semibold">Aucun produit trouvé</p>
-                <p className="text-muted-foreground mt-2">Essayez d'ajuster vos filtres ou votre recherche.</p>
-            </div>
-          )}
+           <Suspense fallback={<ProductGridSkeleton />}>
+              {filteredProducts.length > 0 ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                  {filteredProducts.map((phone) => (
+                    <ProductCard key={phone.id} phone={phone} />
+                  ))}
+                </div>
+              ) : (
+                <div className="flex flex-col items-center justify-center h-full bg-card rounded-lg p-8">
+                    <p className="text-xl font-semibold">Aucun produit trouvé</p>
+                    <p className="text-muted-foreground mt-2">Essayez d'ajuster vos filtres ou votre recherche.</p>
+                </div>
+              )}
+           </Suspense>
         </main>
       </div>
     </div>
