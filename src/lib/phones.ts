@@ -8,7 +8,7 @@ const phones: Phone[] = [
     brand: 'Apple',
     price: 114,
     originalPrice: 150,
-    images: ['/images/cimo-store/iphone-7-plus-black.png', '/images/cimo-store/iphone-7-plus-rose-gold.png'],
+    images: ['/images/cimo-store/iphone_7_plus_black.png', '/images/cimo-store/iphone_7_plus_rose_gold.png'],
     description: 'L\'iPhone qui a tout changé avec son double appareil photo et son design emblématique.',
     features: ['Double appareil photo 12 Mpx', 'Puce A10 Fusion', 'Écran Retina HD'],
     specs: {
@@ -29,7 +29,7 @@ const phones: Phone[] = [
     brand: 'Apple',
     price: 120,
     originalPrice: 180,
-    images: ['/images/cimo-store/iphone-7-plus-jet-black.png', '/images/cimo-store/iphone-7-plus-gold.png'],
+    images: ['/images/cimo-store/iphone_7_plus_jet_black.png', '/images/cimo-store/iphone_7_plus_gold.png'],
     description: 'Plus d\'espace pour vos souvenirs avec le double appareil photo et la puissance de la puce A10 Fusion.',
     features: ['Double appareil photo 12 Mpx', 'Puce A10 Fusion', '256Go de stockage'],
     specs: {
@@ -50,7 +50,7 @@ const phones: Phone[] = [
     brand: 'Apple',
     price: 165,
     originalPrice: 200,
-    images: ['/images/cimo-store/iphone-xr-blue.png', '/images/cimo-store/iphone-xr-coral.png'],
+    images: ['/images/cimo-store/iphone_xr_blue.png', '/images/cimo-store/iphone_xr_coral.png'],
     description: 'Un écran Liquid Retina brillant. Face ID encore plus rapide. La puce la plus intelligente et la plus puissante dans un smartphone.',
     features: ['Face ID', 'Puce A12 Bionic', 'Design tout écran'],
     specs: {
@@ -71,7 +71,7 @@ const phones: Phone[] = [
     brand: 'Apple',
     price: 190,
     originalPrice: 230,
-    images: ['/images/cimo-store/iphone-xr-yellow.png', '/images/cimo-store/iphone-xr-white.png'],
+    images: ['/images/cimo-store/iphone_xr_yellow.png', '/images/cimo-store/iphone_xr_white.png'],
     description: 'Un écran Liquid Retina brillant. Face ID encore plus rapide. Et plus d\'espace pour tout ce que vous aimez.',
     features: ['Face ID', 'Puce A12 Bionic', '128Go de stockage'],
     specs: {
@@ -92,7 +92,7 @@ const phones: Phone[] = [
     brand: 'Apple',
     price: 214,
     originalPrice: 260,
-    images: ['/images/cimo-store/iphone-11-purple.png', '/images/cimo-store/iphone-11-green.png'],
+    images: ['/images/cimo-store/iphone_11_purple.png', '/images/cimo-store/iphone_11_green.png'],
     description: 'Juste la bonne quantité de tout. Un nouveau système à double caméra qui capture plus de ce que vous voyez et aimez.',
     features: ['Puce A13 Bionic', 'Système à double caméra', 'Mode Nuit'],
     specs: {
@@ -113,7 +113,7 @@ const phones: Phone[] = [
     brand: 'Apple',
     price: 249,
     originalPrice: 280,
-    images: ['/images/cimo-store/iphone-11-black.png', '/images/cimo-store/iphone-11-white.png'],
+    images: ['/images/cimo-store/iphone_11_black.png', '/images/cimo-store/iphone_11_white.png'],
     description: 'Juste la bonne quantité de tout, avec plus d\'espace. Un nouveau système à double caméra qui capture plus de ce que vous voyez et aimez.',
     features: ['Puce A13 Bionic', 'Système à double caméra', 'Mode Nuit'],
     specs: {
@@ -134,7 +134,7 @@ const phones: Phone[] = [
     brand: 'Apple',
     price: 288,
     originalPrice: 330,
-    images: ['/images/cimo-store/iphone-11-pro-space-gray.png', '/images/cimo-store/iphone-11-pro-midnight-green.png'],
+    images: ['/images/cimo-store/iphone_11_pro_space_gray.png', '/images/cimo-store/iphone_11_pro_midnight_green.png'],
     description: 'Un système à trois caméras transformateur qui ajoute des tonnes de capacités sans complexité.',
     features: ['Système à trois caméras Pro', 'Puce A13 Bionic', 'Écran Super Retina XDR'],
     specs: {
@@ -155,7 +155,7 @@ const phones: Phone[] = [
     brand: 'Apple',
     price: 350,
     originalPrice: 400,
-    images: ['/images/cimo-store/iphone-11-pro-max-silver.png', '/images/cimo-store/iphone-11-pro-max-gold.png'],
+    images: ['/images/cimo-store/iphone_11_pro_max_silver.png', '/images/cimo-store/iphone_11_pro_max_gold.png'],
     description: 'Le premier système à trois caméras à combiner une technologie de pointe avec la simplicité légendaire de l\'iPhone. Sur un grand écran.',
     features: ['Système à trois caméras Pro', 'Puce A13 Bionic', 'Écran Super Retina XDR 6.5 pouces'],
     specs: {
@@ -176,7 +176,7 @@ const phones: Phone[] = [
     brand: 'Apple',
     price: 378,
     originalPrice: 430,
-    images: ['/images/cimo-store/iphone-12-pro-pacific-blue.png', '/images/cimo-store/iphone-12-pro-graphite.png'],
+    images: ['/images/cimo-store/iphone_12_pro_pacific_blue.png', '/images/cimo-store/iphone_12_pro_graphite.png'],
     description: 'Un bond en avant. 5G. Puce A14 Bionic, la plus rapide sur smartphone. Système de caméra Pro pour des photos incroyables en basse lumière.',
     features: ['5G', 'Puce A14 Bionic', 'Scanner LiDAR'],
     specs: {
@@ -197,7 +197,7 @@ const phones: Phone[] = [
     brand: 'Apple',
     price: 485,
     originalPrice: 530,
-    images: ['/images/cimo-store/iphone-12-pro-max-silver.png', '/images/cimo-store/iphone-12-pro-max-gold.png'],
+    images: ['/images/cimo-store/iphone_12_pro_max_silver.png', '/images/cimo-store/iphone_12_pro_max_gold.png'],
     description: 'Le système de caméra Pro sur iPhone passe au Max. Un plus grand écran Super Retina XDR de 6,7 pouces.',
     features: ['5G', 'Puce A14 Bionic', 'Scanner LiDAR', 'Plus grand écran'],
     specs: {
@@ -218,7 +218,7 @@ const phones: Phone[] = [
     brand: 'Apple',
     price: 368,
     originalPrice: 470,
-    images: ['/images/cimo-store/iphone-13-pink.png', '/images/cimo-store/iphone-13-blue.png'],
+    images: ['/images/cimo-store/iphone_13_pink.png', '/images/cimo-store/iphone_13_blue.png'],
     description: 'Votre nouveau superpouvoir. Notre système à double caméra le plus avancé à ce jour. Une puce qui laisse la concurrence sur place.',
     features: ['Puce A15 Bionic', 'Mode Cinématique', 'Bouclier en céramique'],
     specs: {
@@ -239,7 +239,7 @@ const phones: Phone[] = [
     brand: 'Apple',
     price: 400,
     originalPrice: 500,
-    images: ['/images/cimo-store/iphone-13-midnight.png', '/images/cimo-store/iphone-13-starlight.png'],
+    images: ['/images/cimo-store/iphone_13_midnight.png', '/images/cimo-store/iphone_13_starlight.png'],
     description: 'Votre nouveau superpouvoir. Avec deux fois plus d\'espace pour tout ce que vous aimez.',
     features: ['Puce A15 Bionic', 'Mode Cinématique', '256Go de stockage'],
     specs: {
@@ -260,7 +260,7 @@ const phones: Phone[] = [
     brand: 'Apple',
     price: 445,
     originalPrice: 500,
-    images: ['/images/cimo-store/iphone-13-pro-sierra-blue.png', '/images/cimo-store/iphone-13-pro-graphite.png'],
+    images: ['/images/cimo-store/iphone_13_pro_sierra_blue.png', '/images/cimo-store/iphone_13_pro_graphite.png'],
     description: 'Oh. Tellement. Pro. Un système de caméra radicalement plus puissant. Un écran si réactif que chaque interaction semble nouvelle.',
     features: ['ProMotion', 'Puce A15 Bionic', 'Système de caméra Pro'],
     specs: {
@@ -281,7 +281,7 @@ const phones: Phone[] = [
     brand: 'Apple',
     price: 488,
     originalPrice: 550,
-    images: ['/images/cimo-store/iphone-13-pro-silver.png', '/images/cimo-store/iphone-13-pro-gold.png'],
+    images: ['/images/cimo-store/iphone_13_pro_silver.png', '/images/cimo-store/iphone_13_pro_gold.png'],
     description: 'Oh. Tellement. Pro. Avec plus d\'espace de stockage pour vos créations.',
     features: ['ProMotion', 'Puce A15 Bionic', 'Système de caméra Pro', '256Go de stockage'],
     specs: {
@@ -302,7 +302,7 @@ const phones: Phone[] = [
     brand: 'Apple',
     price: 550,
     originalPrice: 600,
-    images: ['/images/cimo-store/iphone-13-pro-max-sierra-blue.png', '/images/cimo-store/iphone-13-pro-max-graphite.png'],
+    images: ['/images/cimo-store/iphone_13_pro_max_sierra_blue.png', '/images/cimo-store/iphone_13_pro_max_graphite.png'],
     description: 'Le plus grand bond en avant du système de caméra Pro. Un écran Super Retina XDR avec ProMotion. Une autonomie exceptionnelle.',
     features: ['ProMotion', 'Puce A15 Bionic', 'La meilleure autonomie sur iPhone'],
     specs: {
@@ -323,7 +323,7 @@ const phones: Phone[] = [
     brand: 'Apple',
     price: 600,
     originalPrice: 750,
-    images: ['/images/cimo-store/iphone-13-pro-max-silver.png', '/images/cimo-store/iphone-13-pro-max-gold.png'],
+    images: ['/images/cimo-store/iphone_13_pro_max_silver.png', '/images/cimo-store/iphone_13_pro_max_gold.png'],
     description: 'Le plus grand bond en avant du système de caméra Pro. Et un espace de stockage énorme.',
     features: ['ProMotion', 'Puce A15 Bionic', 'La meilleure autonomie sur iPhone', '256Go de stockage'],
     specs: {
@@ -344,7 +344,7 @@ const phones: Phone[] = [
     brand: 'Apple',
     price: 950,
     originalPrice: 1100,
-    images: ['/images/cimo-store/macbook-air-m1-space-gray.png', '/images/cimo-store/macbook-air-m1-gold.png'],
+    images: ['/images/cimo-store/macbook_air_m1_space_gray.png', '/images/cimo-store/macbook_air_m1_gold.png'],
     description: 'Le portable le plus fin et le plus léger d\'Apple, complètement transformé par la puce Apple M1.',
     features: ['Puce M1', 'Écran Retina', 'Jusqu\'à 18h d\'autonomie'],
     specs: {
@@ -365,7 +365,7 @@ const phones: Phone[] = [
     brand: 'Apple',
     price: 250,
     originalPrice: 299,
-    images: ['/images/cimo-store/apple-watch-se-midnight.png', '/images/cimo-store/apple-watch-se-starlight.png'],
+    images: ['/images/cimo-store/apple_watch_se_midnight.png', '/images/cimo-store/apple_watch_se_starlight.png'],
     description: 'Des fonctionnalités essentielles pour vous aider à rester connecté, actif, en bonne santé et en sécurité.',
     features: ['Détection des chutes', 'Suivi du sommeil', 'Résistant à l\'eau'],
     specs: {
@@ -394,3 +394,5 @@ export function getPhoneBrands() {
     const brands = phones.map(phone => phone.brand);
     return [...new Set(brands)];
 }
+
+    
