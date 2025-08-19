@@ -7,63 +7,11 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Trash2, ShoppingBag, Zap } from "lucide-react"
-import { generatePhoneImage } from "@/ai/flows/generate-phone-image"
-import React from "react"
-
-
-function GeneratedCartItemImage({ productName, onImageLoad }: { productName: string; onImageLoad: (url: string) => void }) {
-  const [imageUrl, setImageUrl] = React.useState<string | null>(null);
-  const [isLoading, setIsLoading] = React.useState(true);
-
-  React.useEffect(() => {
-    async function generate() {
-      try {
-        const { media } = await generatePhoneImage({
-          prompt: `Un rendu photoréaliste de haute qualité du smartphone ${productName} sur un fond de studio propre et minimaliste, vue de face.`,
-        });
-        if (media?.url) {
-          setImageUrl(media.url);
-          onImageLoad(media.url);
-        }
-      } catch (error) {
-        console.error("Failed to generate image", error);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    generate();
-  }, [productName, onImageLoad]);
-
-  if (isLoading) {
-    return <div className="rounded-md bg-muted animate-pulse w-[80px] h-[80px]" />;
-  }
-
-  if (!imageUrl) {
-    return <div className="w-[80px] h-[80px] bg-muted flex items-center justify-center text-xs text-center text-muted-foreground">Image non disp.</div>;
-  }
-
-  return (
-      <div className="relative w-[80px] h-[80px]">
-        <Image
-          src={imageUrl}
-          alt={productName}
-          width={80}
-          height={80}
-          className="rounded-md object-cover"
-          data-ai-hint="cart item"
-        />
-        <div className="absolute bottom-1 right-1 bg-primary/80 backdrop-blur-sm text-primary-foreground text-[8px] font-bold py-0.5 px-1 rounded-full flex items-center gap-0.5 z-10">
-          <Zap className="h-2 w-2" />
-          <span>IA</span>
-      </div>
-    </div>
-  );
-}
+import { Trash2, ShoppingBag } from "lucide-react"
 
 
 export default function CartPage() {
-  const { cart, updateQuantity, removeFromCart, totalPrice, itemCount, updateItemImage } = useCart()
+  const { cart, updateQuantity, removeFromCart, totalPrice, itemCount } = useCart()
 
   if (itemCount === 0) {
     return (
@@ -99,10 +47,13 @@ export default function CartPage() {
                   {cart.map((item) => (
                     <TableRow key={item.id}>
                       <TableCell>
-                         <GeneratedCartItemImage 
-                           productName={item.name} 
-                           onImageLoad={(url) => updateItemImage(item.id, [url])}
-                         />
+                        <Image
+                          src={item.images[0]}
+                          alt={item.name}
+                          width={80}
+                          height={80}
+                          className="rounded-md object-cover"
+                        />
                       </TableCell>
                       <TableCell>
                         <p className="font-semibold">{item.name}</p>

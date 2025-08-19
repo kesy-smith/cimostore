@@ -34,7 +34,7 @@ async function GeneratedImage({ productName }: { productName: string }) {
 export default function Home() {
   const allPhones = getPhones();
   const featuredPhones = allPhones.slice(0, 3);
-  const phoneToGenerate = featuredPhones[Math.floor(Math.random() * featuredPhones.length)];
+  const phoneToGenerate = featuredPhones[0];
 
   return (
     <div className="flex flex-col">
@@ -89,7 +89,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredPhones.map((phone) => (
-              <ProductCard key={phone.id} phone={phone} generateImage={true} />
+              <ProductCard key={phone.id} phone={phone} />
             ))}
           </div>
         </div>

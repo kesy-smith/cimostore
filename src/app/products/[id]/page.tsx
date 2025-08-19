@@ -11,41 +11,36 @@ import {
   TableCell,
   TableRow,
 } from "@/components/ui/table"
-import { Badge } from '@/components/ui/badge';
 import { AddToCartButton } from '@/components/AddToCartButton';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { generatePhoneImage } from '@/ai/flows/generate-phone-image';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
-
-async function GeneratedProductImage({ productName }: { productName: string }) {
+async function GeneratedProductImage({ productName }: { productName:string }) {
   const { media } = await generatePhoneImage({
     prompt: `Un rendu photoréaliste de haute qualité du smartphone ${productName} sur un fond de studio propre et minimaliste, vue de face.`,
   });
-  if (!media?.url) {
-    return (
-      <div className="aspect-square w-full bg-muted flex items-center justify-center text-muted-foreground">
-          Image non disponible
-      </div>
-    );
-  }
-  return (
-      <>
-          <Image
-              src={media.url}
-              alt={`Image de ${productName} générée par IA`}
-              width={600}
-              height={600}
-              className="object-cover rounded-lg"
-              data-ai-hint="phone detail"
-          />
-          <div className="absolute bottom-2 right-2 bg-primary/80 backdrop-blur-sm text-primary-foreground text-xs font-bold py-1 px-2 rounded-full flex items-center gap-1 z-10">
-              <Zap className="h-3 w-3" />
-              <span>Générée par IA</span>
-          </div>
-      </>
-  );
-}
 
+  if (!media?.url) {
+    return null;
+  }
+
+  return (
+    <div className="relative aspect-square w-full h-full">
+      <Image
+          src={media.url}
+          alt={`Image de ${productName} générée par IA`}
+          fill
+          className="object-cover rounded-lg"
+          data-ai-hint="phone detail"
+      />
+      <div className="absolute bottom-2 right-2 bg-primary/80 backdrop-blur-sm text-primary-foreground text-xs font-bold py-1 px-2 rounded-full flex items-center gap-1 z-10">
+          <Zap className="h-3 w-3" />
+          <span>Générée par IA</span>
+      </div>
+    </div>
+  )
+}
 
 export default function ProductDetailPage({ params }: { params: { id: string } }) {
   const phone = getPhoneById(Number(params.id));
@@ -58,13 +53,36 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
     <div className="container mx-auto py-12 px-4 md:px-6">
       <div className="grid md:grid-cols-2 gap-12 items-start">
         <div>
-           <Card className="relative">
-            <CardContent className="flex aspect-square items-center justify-center p-0">
-               <React.Suspense fallback={<div className="aspect-square w-full bg-muted animate-pulse rounded-lg" />}>
-                  <GeneratedProductImage productName={phone.name} />
-                </React.Suspense>
-            </CardContent>
-          </Card>
+          <Carousel className="w-full">
+            <CarouselContent>
+               <CarouselItem>
+                <Card className="relative">
+                  <CardContent className="flex aspect-square items-center justify-center p-0">
+                    <React.Suspense fallback={<div className="aspect-square w-full bg-muted animate-pulse rounded-lg" />}>
+                      <GeneratedProductImage productName={phone.name} />
+                    </React.Suspense>
+                  </CardContent>
+                </Card>
+              </CarouselItem>
+              {phone.images.map((img, index) => (
+                <CarouselItem key={index}>
+                   <Card>
+                    <CardContent className="flex aspect-square items-center justify-center p-0">
+                      <Image
+                        src={img}
+                        alt={`${phone.name} - vue ${index + 1}`}
+                        width={600}
+                        height={600}
+                        className="object-cover rounded-lg"
+                      />
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-2" />
+            <CarouselNext className="right-2" />
+          </Carousel>
         </div>
 
         <div className="space-y-6">

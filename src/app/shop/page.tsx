@@ -1,14 +1,13 @@
 "use client";
 
 import { useState, useMemo } from 'react';
-import { getPhones, getPhoneBrands } from '@/lib/phones';
+import { getPhones } from '@/lib/phones';
 import { ProductCard } from '@/components/ProductCard';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Slider } from '@/components/ui/slider';
 import { Input } from '@/components/ui/input';
-import type { Phone } from '@/lib/types';
 
 const allProducts = getPhones();
 const allBrands = [...new Set(allProducts.map(p => p.brand))];
@@ -99,7 +98,7 @@ export default function ShopPage() {
           {filteredProducts.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
               {filteredProducts.map((phone) => (
-                <ProductCard key={phone.id} phone={phone} generateImage={true} />
+                <ProductCard key={phone.id} phone={phone} />
               ))}
             </div>
           ) : (
