@@ -9,6 +9,15 @@ import {
   CardContent,
 } from '@/components/ui/card';
 import React from 'react';
+import { generatePhoneImage } from '@/ai/flows/generate-phone-image';
+
+async function GeneratedImage({ productName }: { productName: string }) {
+  const image = await generatePhoneImage({ prompt: `Une photo de produit de haute qualité d'un ${productName}, sur un fond neutre.` });
+  if (!image.media?.url) {
+    return <div className="aspect-video w-full bg-muted animate-pulse rounded-lg" />;
+  }
+  return <Image src={image.media.url} alt={`Image générée de ${productName}`} fill className="object-cover rounded-lg" priority />;
+}
 
 export default function Home() {
   const allPhones = getPhones();
@@ -42,15 +51,10 @@ export default function Home() {
             </div>
             <div className="relative aspect-video rounded-xl shadow-2xl">
                  <Card className='h-full w-full'>
-                    <CardContent className='p-0 h-full w-full'>
-                        <Image
-                            src={heroPhone.images[0]}
-                            alt={heroPhone.name}
-                            width={1200}
-                            height={675}
-                            className="rounded-lg object-cover w-full h-full"
-                            priority
-                        />
+                    <CardContent className='p-0 h-full w-full relative'>
+                       <React.Suspense fallback={<div className="aspect-video w-full bg-muted animate-pulse rounded-lg" />}>
+                         <GeneratedImage productName={heroPhone.name} />
+                       </React.Suspense>
                     </CardContent>
                  </Card>
             </div>
