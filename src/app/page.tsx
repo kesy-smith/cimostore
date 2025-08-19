@@ -9,8 +9,6 @@ import {
   CardContent,
 } from '@/components/ui/card';
 import React from 'react';
-import { generatePhoneImage } from '@/ai/flows/generate-phone-image';
-import { Skeleton } from '@/components/ui/skeleton';
 
 export default function Home() {
   const allPhones = getPhones();
