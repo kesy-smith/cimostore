@@ -12,27 +12,6 @@ import React from 'react';
 import { generatePhoneImage } from '@/ai/flows/generate-phone-image';
 import { Skeleton } from '@/components/ui/skeleton';
 
-async function GeneratedImage({ productName }: { productName: string }) {
-  const imageData = await generatePhoneImage({ prompt: `Une photo de produit professionnel et de haute qualité d'un ${productName} sur un fond minimaliste.` });
-
-  if (!imageData?.media?.url) {
-    // Affiche un placeholder si la génération échoue
-    return <Image src="https://placehold.co/1200x675.png" alt="Image placeholder" width={1200} height={675} className="rounded-lg object-cover w-full h-full" />;
-  }
-
-  return (
-    <Image
-      src={imageData.media.url}
-      alt={`Image générée de ${productName}`}
-      width={1200}
-      height={675}
-      className="rounded-lg object-cover w-full h-full"
-      priority
-    />
-  );
-}
-
-
 export default function Home() {
   const allPhones = getPhones();
   const featuredPhones = allPhones.slice(0, 3);
@@ -66,9 +45,14 @@ export default function Home() {
             <div className="relative aspect-video rounded-xl shadow-2xl">
                  <Card className='h-full w-full'>
                     <CardContent className='p-0 h-full w-full'>
-                        <React.Suspense fallback={<Skeleton className="h-full w-full" />}>
-                           <GeneratedImage productName={heroPhone.name} />
-                        </React.Suspense>
+                        <Image
+                            src={heroPhone.images[0]}
+                            alt={heroPhone.name}
+                            width={1200}
+                            height={675}
+                            className="rounded-lg object-cover w-full h-full"
+                            priority
+                        />
                     </CardContent>
                  </Card>
             </div>
