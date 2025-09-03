@@ -24,7 +24,7 @@ export default function Home() {
                 Bienvenue chez CIMO STORE
                 </h1>
                 <p className="text-lg text-foreground/80 md:text-xl">
-                Découvrez les derniers smartphones, des offres imbattables et un service client de premier ordre.
+                Découvrez les derniers smartphones, des offres imbattables  dans ka ville de Bukavu et un service client de premier ordre.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                 <Button asChild size="lg" className="font-headline">
@@ -42,7 +42,7 @@ export default function Home() {
             </div>
             <div className="relative aspect-video rounded-xl shadow-2xl">
                  <Card className='h-full w-full'>
-                    <CardContent className='p-0 h-full w-full relative'>
+                    <CardContent className='relative p-0 h-full w-full'>
                        <Image 
                          src={heroPhone.images[0]} 
                          alt={heroPhone.name} 

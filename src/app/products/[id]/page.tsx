@@ -31,13 +31,13 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
               {phone.images.map((img, index) => (
                 <CarouselItem key={index}>
                    <Card>
-                    <CardContent className="flex aspect-square items-center justify-center p-0">
+                    <CardContent className="flex aspect-square items-center justify-center p-0 relative">
                       <Image
                         src={img}
                         alt={`${phone.name} - vue ${index + 1}`}
-                        width={600}
-                        height={600}
+                        fill
                         className="object-contain rounded-lg p-4"
+                        sizes="(max-width: 768px) 100vw, 50vw"
                       />
                     </CardContent>
                   </Card>

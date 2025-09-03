@@ -71,7 +71,7 @@ Veuillez préparer la livraison.
   };
   
   if (itemCount === 0) {
-      return null; // or a loading spinner, or a redirect message
+      return null;
   }
 
   return (
