@@ -47,7 +47,7 @@ export default function Home() {
                          src={heroPhone.images[0]} 
                          alt={heroPhone.name} 
                          fill 
-                         className="object-cover rounded-lg"
+                         className="object-contain rounded-lg p-4"
                          priority 
                        />
                     </CardContent>

@@ -37,7 +37,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                         alt={`${phone.name} - vue ${index + 1}`}
                         width={600}
                         height={600}
-                        className="object-cover rounded-lg"
+                        className="object-contain rounded-lg p-4"
                       />
                     </CardContent>
                   </Card>
